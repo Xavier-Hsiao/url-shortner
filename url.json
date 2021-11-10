@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "originUrl": "https://www.mlb.com/",
+      "shorten": "mlb22"
+    },
+    {
+      "originUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "shorten": "rick8"
+    },
+    {
+      "originUrl": "https://savoirs.rfi.fr/fr/APPRENDRE-ENSEIGNER/langue-francaise/journal-en-francais-facile",
+      "shorten": "38fr0"
+    },
+    {
+      "originUrl": "https://www.udemy.com/",
+      "shorten": "5566u"
+    },
+    {
+      "originUrl": "http://www.u-acg.com/",
+      "shorten": "acg99"
+    }
+  ]
+}
