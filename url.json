@@ -1,24 +1,24 @@
 {
   "results": [
     {
-      "originUrl": "https://www.mlb.com/",
-      "shorten": "mlb22"
+      "originalURL": "https://www.mlb.com/",
+      "shortenedDigits": "mlb22"
     },
     {
-      "originUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "shorten": "rick8"
+      "originalURL": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "shortenedDigits": "rick8"
     },
     {
-      "originUrl": "https://savoirs.rfi.fr/fr/APPRENDRE-ENSEIGNER/langue-francaise/journal-en-francais-facile",
-      "shorten": "38fr0"
+      "originalURL": "https://savoirs.rfi.fr/fr/APPRENDRE-ENSEIGNER/langue-francaise/journal-en-francais-facile",
+      "shortenedDigits": "38fr0"
     },
     {
-      "originUrl": "https://www.udemy.com/",
-      "shorten": "5566u"
+      "originalURL": "https://www.udemy.com/",
+      "shortenedDigits": "5566u"
     },
     {
-      "originUrl": "http://www.u-acg.com/",
-      "shorten": "acg99"
+      "originalURL": "http://www.u-acg.com/",
+      "shortenedDigits": "acg99"
     }
   ]
 }

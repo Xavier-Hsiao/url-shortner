@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars') 
 const mongoose = require('mongoose')
+const Url = require('./models/url')
 const port = 3000
 
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: 'hbs'}))
