@@ -13,7 +13,8 @@ db.on('error', () => {
 db.once('open', () => {
   Url.create(dummyData)
     .then(() => {
-      console.log('DB OPEN!!')
+      console.log('inserted dummy data!!')
+      //close mongoose connection once the seeder has done
       return db.close()
     })
 })
