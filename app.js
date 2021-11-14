@@ -11,6 +11,12 @@ app.engine('hbs', exphbs({defaultLayout: 'main', extname: 'hbs'}))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: false }))
+//error handler
+// app.use((err, req, res, next) => {
+//   console.log('error')
+//   console.log(err)
+//   next(err)
+// })
 
 mongoose.connect('mongodb://localhost/url-shortner')
 
@@ -24,9 +30,16 @@ db.once('open', () => {
   console.log('DB OPEN!!')
 })
 
+
+
+
 //home page route
 app.get('/', (req, res) => {
   res.render('index')
+})
+
+app.get('/error', (req, res) => {
+  cat.cute()
 })
 
 //original website redirection route
@@ -34,13 +47,21 @@ app.get('/:shortenedDigits', (req, res) => {
   const shortenedDigits = req.params.shortenedDigits
   Url.findOne({shortenedDigits})
     .lean()
-    .then((href) => {
-      if(href) {
+    .then(href => {
         // console.log(href.originalURL)
         res.redirect(href.originalURL)
-      }
-    }) 
-    .catch((err) => console.log(err))
+    })
+      // res.status(404).render('error', {
+      //   statusCode: '404',
+      //   errorMessage: 'Failed to find any results.'
+      // })
+    .catch(err => {
+      console.log(err)
+      res.render('error', {
+        statusCode: '404',
+        errorMessage: 'Failed to find any results.'
+      })
+    })
 })
 
 const host = 'localhost:3000/'
@@ -55,7 +76,7 @@ app.post('/', (req, res) => {
       //search for the matched targetUrl in urls Array
       newUrl = urls.find(url => url.originalURL === inputUrl)
       //check if inputUrl exists in Database 
-      if(newUrl) {
+        if(newUrl) {
         newUrl = host + newUrl.shortenedDigits
         return res.render('shortenedUrl', {newUrl})
       }
