@@ -11,12 +11,6 @@ app.engine('hbs', exphbs({defaultLayout: 'main', extname: 'hbs'}))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: false }))
-//error handler
-// app.use((err, req, res, next) => {
-//   console.log('error')
-//   console.log(err)
-//   next(err)
-// })
 
 mongoose.connect('mongodb://localhost/url-shortner')
 
@@ -30,16 +24,9 @@ db.once('open', () => {
   console.log('DB OPEN!!')
 })
 
-
-
-
 //home page route
 app.get('/', (req, res) => {
   res.render('index')
-})
-
-app.get('/error', (req, res) => {
-  cat.cute()
 })
 
 //original website redirection route
@@ -51,10 +38,6 @@ app.get('/:shortenedDigits', (req, res) => {
         // console.log(href.originalURL)
         res.redirect(href.originalURL)
     })
-      // res.status(404).render('error', {
-      //   statusCode: '404',
-      //   errorMessage: 'Failed to find any results.'
-      // })
     .catch(err => {
       console.log(err)
       res.render('error', {
@@ -94,6 +77,10 @@ app.post('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// error handler
+app.use((err, req, res, next) => {
+  console.log('error')
+})
 
 app.listen(port, () => {
   console.log(`The server is running on http://localhost${port}!`)

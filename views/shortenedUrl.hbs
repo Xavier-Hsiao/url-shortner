@@ -3,9 +3,21 @@
     <h3>
       Success! Here's your shortened link:
     </h3>
-    <h3>
-      <a href="http://{{newUrl}}">http://{{newUrl}}</a>     
-    </h3>
-    <a href="/" class="btn btn-outline-dark ml-2 btn-lg rounded-pill font-weight-bold mt-5">Back</a>
+    <h3><a href="http://{{newUrl}}" id="copy-text">http://{{newUrl}}</a></h3>
+    <div class="btn-group">
+      <a href="/" class="btn btn-outline-dark ml-2 btn-lg rounded-pill font-weight-bold mt-5 mx-4">Back</a>
+      <button id="btn-copy" class="btn btn-warning btn-lg rounded-pill mt-5">Copy</button>
+    </div>
   </div>
 </div>
+
+<script>
+  const copyButton = document.querySelector('#btn-copy')
+
+  copyButton.addEventListener('click', function onCopyButtonClicked() {
+    const copyText = document.querySelector('#copy-text')
+    console.log(copyText.innerText)
+    navigator.clipboard.writeText(copyText.innerText)
+    alert('Copied the text:' + copyText.innerText)
+  })
+</script>
