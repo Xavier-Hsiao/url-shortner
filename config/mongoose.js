@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/url-shortner'
 
-mongoose.connect('mongodb://localhost/url-shortner')
+mongoose.connect(MONGODB_URI)
 
 const db = mongoose.connection
 
