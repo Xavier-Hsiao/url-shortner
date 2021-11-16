@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
   const inputUrl = req.body.inputUrl
   let newUrl = ''
   let newDigits = ''
-  
+
   Url.find()
     .lean()
     .then(urls => {
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
       }
       //generate random five digits
       newDigits = digitGenerator()
-      newUrl = host + newDigits
+      newUrl = host + '/' + newDigits
       //check if newUrl exists in Database 
       while(urls.some(url => url.originalURL === newUrl)) {
         newDigits = digitGenerator()
