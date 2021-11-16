@@ -8,13 +8,13 @@ router.get('/', (req, res) => {
   res.render('index')
 })
 
-const host = 'localhost:3000/'
-let newUrl = ''
-let newDigits = ''
 
 router.post('/', (req, res) => {
-  console.log(req.body)
+  const host = req.headers.host
   const inputUrl = req.body.inputUrl
+  let newUrl = ''
+  let newDigits = ''
+  
   Url.find()
     .lean()
     .then(urls => {
