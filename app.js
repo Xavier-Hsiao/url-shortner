@@ -5,12 +5,15 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Url = require('./models/url')
 const digitGenerator = require('./utilities/digitGenerator')
-const port = 3000
+const routes = require('./routes')
+//process.env.PORT for heroku env; 3000 for local env
+const PORT = process.env.PORT || 3000
 
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: 'hbs'}))
 app.set('view engine', 'hbs')
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(routes)
 
 mongoose.connect('mongodb://localhost/url-shortner')
 
@@ -24,64 +27,6 @@ db.once('open', () => {
   console.log('DB OPEN!!')
 })
 
-//home page route
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
-//original website redirection route
-app.get('/:shortenedDigits', (req, res) => {
-  const shortenedDigits = req.params.shortenedDigits
-  Url.findOne({shortenedDigits})
-    .lean()
-    .then(href => {
-        // console.log(href.originalURL)
-        res.redirect(href.originalURL)
-    })
-    .catch(err => {
-      console.log(err)
-      res.render('error', {
-        statusCode: '404',
-        errorMessage: 'Failed to find any results.'
-      })
-    })
-})
-
-const host = 'localhost:3000/'
-let newUrl = ''
-let newDigits = ''
-
-app.post('/', (req, res) => {
-  const inputUrl = req.body.inputUrl
-  Url.find()
-    .lean()
-    .then(urls => {
-      //search for the matched targetUrl in urls Array
-      newUrl = urls.find(url => url.originalURL === inputUrl)
-      //check if inputUrl exists in Database 
-        if(newUrl) {
-        newUrl = host + newUrl.shortenedDigits
-        return res.render('shortenedUrl', {newUrl})
-      }
-      //generate random five digits
-      newDigits = digitGenerator()
-      newUrl = host + newDigits
-      //check if newUrl exists in Database 
-      while(urls.some(url => url.originalURL === newUrl)) {
-        newDigits = digitGenerator()
-      }
-      //create a new document to Database
-      return Url.create({originalURL: inputUrl, shortenedDigits: newDigits})
-    })
-    .then(() => res.render('shortenedUrl', {newUrl, newDigits}))
-    .catch(err => console.log(err))
-})
-
-// error handler
-app.use((err, req, res, next) => {
-  console.log('error')
-})
-
-app.listen(port, () => {
-  console.log(`The server is running on http://localhost${port}!`)
+app.listen(PORT, () => {
+  console.log(`The server is running on http://localhost${PORT}!`)
 })
