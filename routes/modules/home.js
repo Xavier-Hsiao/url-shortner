@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Url = require('../../models/url')
+const digitGenerator = require('../../utilities/digitGenerator')
 
 //home page route
 router.get('/', (req, res) => {
