@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
       newUrl = urls.find(url => url.originalURL === inputUrl)
       //check if inputUrl exists in Database 
         if(newUrl) {
-        // newUrl = host + '/'newUrl.shortenedDigits
+        newUrl = host + '/' + newUrl.shortenedDigits
         return res.render('shortenedUrl', {newUrl})
       }
       //generate random five digits
