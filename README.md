@@ -11,7 +11,7 @@ Don't worry about hell long url anymore. With this tiny tool, you can shrink dow
 
 ## Prerequisites
 1. Node.js (v17.0.1 recommended)
-2. terminal for your OS
+2. terminal fo your OS
 
 ##Installation
 1. clone the repo
