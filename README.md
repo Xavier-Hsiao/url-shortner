@@ -13,7 +13,7 @@ Don't worry about hell long url anymore. With this tiny tool, you can shrink dow
 1. Node.js (v17.0.1 recommended)
 2. terminal fo your OS
 
-##Installation
+## Installation
 1. clone the repo
 ```
 git clone https://github.com/Xavier-Hsiao/url-shortner.git
@@ -27,7 +27,7 @@ cd url-shortner
 npm install
 ```
 
-##Using
+## Using
 1. Script for running data seeder.
 ```
 npm run seeder
@@ -37,13 +37,13 @@ npm run seeder
 npm run dev
 ```
 
-##Gallery
-###home page
+## Gallery
+### home page
 ![home page](https://github.com/Xavier-Hsiao/url-shortner/blob/main/public/image/url-shortner-homepage.png)
-###success page
+### success page
 ![success page](https://github.com/Xavier-Hsiao/url-shortner/blob/main/public/image/url-shortner-success.png)
 
-##Tools
+## Tools
 - Node.js v17.0.1
 - Express
 - Express-hanldebars
